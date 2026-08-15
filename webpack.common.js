@@ -8,9 +8,7 @@ export default {
     filename: 'main.js',
     path: path.resolve(import.meta.dirname, 'dist'),
     clean: true,
-
-    // Uncomment for GitHub Pages projects
-    // publicPath: '/repo-name/',
+    publicPath: '/odin-javascript-todo-list/',
   },
 
   plugins: [
