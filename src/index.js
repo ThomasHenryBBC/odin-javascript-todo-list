@@ -5,6 +5,7 @@ import {
   renderTodoCreator,
   clearPageContainer,
   renderTodoList,
+  renderProjectList,
 } from './services/page-display.js';
 import { todoList, projectList } from './data.js';
 

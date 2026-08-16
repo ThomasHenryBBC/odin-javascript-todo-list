@@ -138,3 +138,27 @@ export function renderTodoList(todoList, projectList) {
 
   pageContainer.append(todoListContainer);
 }
+
+export function renderProjectList(projectList) {
+  clearPageContainer();
+
+  const pageContainer = document.getElementById('page-container');
+  const projectListContainer = document.createElement('div');
+  projectListContainer.id = 'project-list';
+
+  projectList.forEach((project) => {
+    const projectItem = document.createElement('div');
+    projectItem.className = 'project-item';
+
+    const name = document.createElement('h3');
+    name.textContent = project.name;
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    projectItem.append(name, description);
+    projectListContainer.append(projectItem);
+  });
+
+  pageContainer.append(projectListContainer);
+}
