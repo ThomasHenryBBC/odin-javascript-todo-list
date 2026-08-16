@@ -1,7 +1,23 @@
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg, rgb(245, 247, 255), rgb(237, 240, 255));
+  min-height: 100vh;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(135deg, rgb(225, 230, 255), rgb(235, 225, 255));
+  padding: 1rem;
+  border-bottom: 1px solid rgba(120, 120, 180, 0.15);
+  box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
+}
+
 header h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 #main-container {
@@ -9,8 +25,7 @@ header h1 {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 20px;
-  gap: 20px;
+  min-height: calc(100vh - 100px);
 }
 
 nav {
@@ -19,12 +34,39 @@ nav {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-  flex: 1 1 120;
+  flex: 1 1 120px;
   max-width: 120px;
+  align-self: stretch;
+
+  background: linear-gradient(180deg, rgb(238, 242, 255), rgb(234, 229, 255));
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
 }
 
 nav button {
   margin: 5px;
   font-size: 16px;
   cursor: pointer;
+}
+
+#page-container {
+  flex: 1;
+
+  background: linear-gradient(180deg, rgb(248, 249, 255), rgb(243, 241, 255));
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
+}
+
+.todo-item {
+  background: linear-gradient(135deg, rgb(242, 245, 255), rgb(239, 236, 255));
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(120, 120, 180, 0.1);
+}
+
+.todo-item h3 {
+  margin-top: 0;
 }
