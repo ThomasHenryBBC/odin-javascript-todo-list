@@ -1,4 +1,5 @@
 import { projectList } from '../data.js';
+import createProject from './create-project.js';
 
 export function renderTodoCreator(onSubmit) {
   clearPageContainer();
@@ -221,4 +222,21 @@ export function renderProjectCreator(onSubmit) {
     submitButton,
   );
   pageContainer.append(projectForm);
+}
+
+export function renderProjectsPage() {
+  clearPageContainer();
+
+  renderProjectList(projectList);
+
+  renderProjectCreator((projectData) => {
+    const project = new createProject(
+      projectData.name,
+      projectData.description,
+    );
+
+    projectList.push(project);
+
+    renderProjectsPage();
+  });
 }
