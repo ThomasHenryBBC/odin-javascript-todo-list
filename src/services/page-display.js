@@ -1,5 +1,6 @@
 import { projectList } from '../data.js';
 import createProject from './create-project.js';
+import deleteTodo from './delete-todo.js';
 
 export function renderTodoCreator(onSubmit) {
   clearPageContainer();
@@ -131,7 +132,15 @@ export function renderTodoList(todoList, projectList) {
         const priority = document.createElement('p');
         priority.textContent = `Priority: ${todo.priority}`;
 
-        todoItem.append(title, description, dueDate, priority);
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+          deleteTodo(todo, todoList, () => {
+            renderTodoList(todoList, projectList);
+          });
+        });
+
+        todoItem.append(title, description, dueDate, priority, deleteButton);
         todoListContainer.append(todoItem);
       });
     }
