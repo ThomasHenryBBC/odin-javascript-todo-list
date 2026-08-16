@@ -5,11 +5,4 @@ export default class createTodo {
     this.dueDate = dueDate;
     this.priority = priority;
   }
-
-  consoleLog() {
-    console.log(`Title: ${this.title}`);
-    console.log(`Description: ${this.description}`);
-    console.log(`Due Date: ${this.dueDate}`);
-    console.log(`Priority: ${this.priority}`);
-  }
 }

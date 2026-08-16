@@ -69,3 +69,9 @@ export function renderTodoCreator(onSubmit) {
   );
   pageContainer.append(todoForm);
 }
+
+export function clearPageContainer() {
+  const pageContainer = document.getElementById('page-container');
+  pageContainer.innerHTML = '';
+}
+
