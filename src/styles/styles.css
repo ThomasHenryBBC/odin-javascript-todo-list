@@ -1,13 +1,13 @@
 body {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(135deg, rgb(245, 247, 255), rgb(237, 240, 255));
+  background: rgb(243, 245, 252);
   min-height: 100vh;
   color: #333;
 }
 
 header {
-  background: linear-gradient(135deg, rgb(225, 230, 255), rgb(235, 225, 255));
+  background: rgb(228, 232, 248);
   padding: 1rem;
   border-bottom: 1px solid rgba(120, 120, 180, 0.15);
   box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
@@ -38,29 +38,62 @@ nav {
   max-width: 120px;
   align-self: stretch;
 
-  background: linear-gradient(180deg, rgb(238, 242, 255), rgb(234, 229, 255));
+  background: rgb(236, 238, 249);
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
 }
 
 nav button {
-  margin: 5px;
-  font-size: 16px;
+  width: 100%;
+
+  padding: 0.75rem;
+  margin: 0.35rem 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: rgb(223, 228, 247);
+  color: rgb(74, 74, 104);
+
+  font: inherit;
+  font-weight: 600;
+
   cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+nav button:hover {
+  background-color: rgb(210, 217, 245);
+  box-shadow: 0 2px 6px rgba(100, 100, 150, 0.12);
+  transform: translateY(-1px);
+}
+
+nav button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+nav button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(140, 150, 255, 0.2);
 }
 
 #page-container {
   flex: 1;
 
-  background: linear-gradient(180deg, rgb(248, 249, 255), rgb(243, 241, 255));
+  background: rgb(247, 248, 253);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
 }
 
 .todo-item {
-  background: linear-gradient(135deg, rgb(242, 245, 255), rgb(239, 236, 255));
+  background: rgb(237, 240, 250);
   border-radius: 10px;
   padding: 12px 16px;
   margin-bottom: 12px;
@@ -79,7 +112,7 @@ form {
   max-width: 500px;
   padding: 1.5rem;
 
-  background: linear-gradient(135deg, rgb(245, 247, 255), rgb(238, 235, 255));
+  background: rgb(242, 244, 251);
 
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(100, 100, 150, 0.08);
@@ -129,7 +162,7 @@ form button {
   border: none;
   border-radius: 8px;
 
-  background: linear-gradient(135deg, rgb(150, 170, 255), rgb(180, 150, 255));
+  background: rgb(165, 175, 245);
 
   color: white;
   font-weight: 600;
