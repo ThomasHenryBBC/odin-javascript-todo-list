@@ -1,3 +1,5 @@
+import { projectList } from '../data.js';
+
 export function renderTodoCreator(onSubmit) {
   clearPageContainer();
 
@@ -41,6 +43,18 @@ export function renderTodoCreator(onSubmit) {
   prioritySelectLabel.for = 'priority';
   prioritySelectLabel.textContent = 'Priority:';
 
+  const projectSelect = document.createElement('select');
+  projectList.forEach((project) => {
+    const option = document.createElement('option');
+    option.value = project;
+    option.textContent = project;
+    projectSelect.append(option);
+  });
+
+  const projectSelectLabel = document.createElement('label');
+  projectSelectLabel.for = 'project';
+  projectSelectLabel.textContent = 'Project:';
+
   const submitButton = document.createElement('button');
   submitButton.type = 'submit';
   submitButton.textContent = 'Add Todo';
@@ -67,6 +81,8 @@ export function renderTodoCreator(onSubmit) {
     dueDateInput,
     prioritySelectLabel,
     prioritySelect,
+    projectSelectLabel,
+    projectSelect,
     submitButton,
   );
   pageContainer.append(todoForm);
