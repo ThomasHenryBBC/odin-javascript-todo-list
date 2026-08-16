@@ -1,4 +1,6 @@
 export function renderTodoCreator(onSubmit) {
+  clearPageContainer();
+
   const pageContainer = document.getElementById('page-container');
   const todoForm = document.createElement('form');
   todoForm.id = 'todo-form';
@@ -75,3 +77,32 @@ export function clearPageContainer() {
   pageContainer.innerHTML = '';
 }
 
+export function renderTodoList(todoList) {
+  clearPageContainer();
+
+  const pageContainer = document.getElementById('page-container');
+  const todoListContainer = document.createElement('div');
+  todoListContainer.id = 'todo-list';
+
+  todoList.forEach((todo) => {
+    const todoItem = document.createElement('div');
+    todoItem.className = 'todo-item';
+
+    const title = document.createElement('h3');
+    title.textContent = todo.title;
+
+    const description = document.createElement('p');
+    description.textContent = todo.description;
+
+    const dueDate = document.createElement('p');
+    dueDate.textContent = `Due Date: ${todo.dueDate}`;
+
+    const priority = document.createElement('p');
+    priority.textContent = `Priority: ${todo.priority}`;
+
+    todoItem.append(title, description, dueDate, priority);
+    todoListContainer.append(todoItem);
+  });
+
+  pageContainer.append(todoListContainer);
+}
