@@ -1,6 +1,4 @@
-import createTodo from './create-todo.js';
-
-export function renderTodoCreator() {
+export function renderTodoCreator(onSubmit) {
   const pageContainer = document.getElementById('page-container');
   const todoForm = document.createElement('form');
   todoForm.id = 'todo-form';
@@ -45,15 +43,18 @@ export function renderTodoCreator() {
   submitButton.type = 'submit';
   submitButton.textContent = 'Add Todo';
 
-  todoForm.addEventListener('submit', (event) => {
+  function handleFormSubmit(event) {
     event.preventDefault();
-    const newTodo = new createTodo(
-      titleInput.value,
-      descriptionInput.value,
-      dueDateInput.value,
-      prioritySelect.value,
-    );
-  });
+    const todoData = {
+      title: titleInput.value,
+      description: descriptionInput.value,
+      dueDate: dueDateInput.value,
+      priority: prioritySelect.value,
+    };
+    onSubmit(todoData);
+  }
+
+  todoForm.addEventListener('submit', handleFormSubmit);
 
   todoForm.append(
     titleInputLabel,
