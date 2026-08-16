@@ -46,8 +46,8 @@ export function renderTodoCreator(onSubmit) {
   const projectSelect = document.createElement('select');
   projectList.forEach((project) => {
     const option = document.createElement('option');
-    option.value = project;
-    option.textContent = project;
+    option.value = project.name;
+    option.textContent = project.name;
     projectSelect.append(option);
   });
 
@@ -103,10 +103,12 @@ export function renderTodoList(todoList, projectList) {
 
   for (const project of projectList) {
     const projectHeader = document.createElement('h2');
-    projectHeader.textContent = project;
+    projectHeader.textContent = project.name;
     todoListContainer.append(projectHeader);
 
-    const projectTodos = todoList.filter((todo) => todo.project === project);
+    const projectTodos = todoList.filter(
+      (todo) => todo.project === project.name,
+    );
     if (projectTodos.length === 0) {
       const noTodosMessage = document.createElement('p');
       noTodosMessage.textContent = 'No todos for this project.';

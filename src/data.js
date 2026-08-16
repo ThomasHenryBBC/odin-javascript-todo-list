@@ -23,4 +23,17 @@ export const todoList = [
   },
 ];
 
-export const projectList = ['General', 'Work', 'Personal'];
+export const projectList = [
+  {
+    name: 'General',
+    description: 'General tasks and reminders.',
+  },
+  {
+    name: 'Work',
+    description: 'Tasks related to work and professional development.',
+  },
+  {
+    name: 'Personal',
+    description: 'Personal tasks and hobbies.',
+  },
+];
