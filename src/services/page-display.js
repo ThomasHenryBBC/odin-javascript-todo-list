@@ -146,6 +146,16 @@ export function renderProjectList(projectList) {
   const projectListContainer = document.createElement('div');
   projectListContainer.id = 'project-list';
 
+  const header = document.createElement('h2');
+  header.textContent = 'Projects';
+  projectListContainer.append(header);
+
+  if (projectList.length === 0) {
+    const noProjectsMessage = document.createElement('p');
+    noProjectsMessage.textContent = 'No projects available.';
+    projectListContainer.append(noProjectsMessage);
+  }
+
   projectList.forEach((project) => {
     const projectItem = document.createElement('div');
     projectItem.className = 'project-item';
@@ -161,4 +171,54 @@ export function renderProjectList(projectList) {
   });
 
   pageContainer.append(projectListContainer);
+}
+
+export function renderProjectCreator(onSubmit) {
+  const pageContainer = document.getElementById('page-container');
+  const projectForm = document.createElement('form');
+  projectForm.id = 'project-form';
+
+  const header = document.createElement('h2');
+  header.textContent = 'Create New Project';
+  projectForm.append(header);
+
+  const nameInput = document.createElement('input');
+  nameInput.type = 'text';
+  nameInput.placeholder = 'Project Name';
+  nameInput.required = true;
+
+  const nameInputLabel = document.createElement('label');
+  nameInputLabel.for = 'name';
+  nameInputLabel.textContent = 'Project Name:';
+
+  const descriptionInput = document.createElement('textarea');
+  descriptionInput.placeholder = 'Project Description';
+
+  const descriptionInputLabel = document.createElement('label');
+  descriptionInputLabel.for = 'description';
+  descriptionInputLabel.textContent = 'Project Description:';
+
+  const submitButton = document.createElement('button');
+  submitButton.type = 'submit';
+  submitButton.textContent = 'Add Project';
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const projectData = {
+      name: nameInput.value,
+      description: descriptionInput.value,
+    };
+    onSubmit(projectData);
+  }
+
+  projectForm.addEventListener('submit', handleFormSubmit);
+
+  projectForm.append(
+    nameInputLabel,
+    nameInput,
+    descriptionInputLabel,
+    descriptionInput,
+    submitButton,
+  );
+  pageContainer.append(projectForm);
 }

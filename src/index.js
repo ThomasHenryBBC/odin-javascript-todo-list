@@ -1,11 +1,13 @@
 import './styles/reset.css';
 import './styles/styles.css';
 import createTodo from './services/create-todo.js';
+import createProject from './services/create-project.js';
 import {
   renderTodoCreator,
   clearPageContainer,
   renderTodoList,
   renderProjectList,
+  renderProjectCreator,
 } from './services/page-display.js';
 import { todoList, projectList } from './data.js';
 
@@ -33,6 +35,15 @@ viewTodoListButton.addEventListener('click', () => {
 const viewProjectsButton = document.getElementById('projects');
 viewProjectsButton.addEventListener('click', () => {
   renderProjectList(projectList);
+  renderProjectCreator((projectData) => {
+    const project = new createProject(
+      projectData.name,
+      projectData.description,
+    );
+    projectList.push(project);
+    console.log('Project List:', projectList);
+    renderProjectList(projectList);
+  });
 });
 
 // Initial render of the todo list
