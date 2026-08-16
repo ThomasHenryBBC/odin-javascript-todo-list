@@ -20,8 +20,8 @@ createTodoButton.addEventListener('click', () => {
     );
     todoList.push(todo);
     console.log('Todo List:', todoList);
-    renderTodoList(todoList);
+    renderTodoList(todoList, projectList);
   });
 });
 
-renderTodoList(todoList);
+renderTodoList(todoList, projectList);

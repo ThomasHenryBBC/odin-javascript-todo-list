@@ -66,6 +66,7 @@ export function renderTodoCreator(onSubmit) {
       description: descriptionInput.value,
       dueDate: dueDateInput.value,
       priority: prioritySelect.value,
+      project: projectSelect.value,
     };
     onSubmit(todoData);
   }
@@ -93,32 +94,45 @@ export function clearPageContainer() {
   pageContainer.innerHTML = '';
 }
 
-export function renderTodoList(todoList) {
+export function renderTodoList(todoList, projectList) {
   clearPageContainer();
 
   const pageContainer = document.getElementById('page-container');
   const todoListContainer = document.createElement('div');
   todoListContainer.id = 'todo-list';
 
-  todoList.forEach((todo) => {
-    const todoItem = document.createElement('div');
-    todoItem.className = 'todo-item';
+  for (const project of projectList) {
+    const projectHeader = document.createElement('h2');
+    projectHeader.textContent = project;
+    todoListContainer.append(projectHeader);
 
-    const title = document.createElement('h3');
-    title.textContent = todo.title;
+    const projectTodos = todoList.filter((todo) => todo.project === project);
+    if (projectTodos.length === 0) {
+      const noTodosMessage = document.createElement('p');
+      noTodosMessage.textContent = 'No todos for this project.';
+      todoListContainer.append(noTodosMessage);
+    } else {
+      projectTodos.forEach((todo) => {
+        const todoItem = document.createElement('div');
+        todoItem.className = 'todo-item';
 
-    const description = document.createElement('p');
-    description.textContent = todo.description;
+        const title = document.createElement('h3');
+        title.textContent = todo.title;
 
-    const dueDate = document.createElement('p');
-    dueDate.textContent = `Due Date: ${todo.dueDate}`;
+        const description = document.createElement('p');
+        description.textContent = todo.description;
 
-    const priority = document.createElement('p');
-    priority.textContent = `Priority: ${todo.priority}`;
+        const dueDate = document.createElement('p');
+        dueDate.textContent = `Due Date: ${todo.dueDate}`;
 
-    todoItem.append(title, description, dueDate, priority);
-    todoListContainer.append(todoItem);
-  });
+        const priority = document.createElement('p');
+        priority.textContent = `Priority: ${todo.priority}`;
+
+        todoItem.append(title, description, dueDate, priority);
+        todoListContainer.append(todoItem);
+      });
+    }
+  }
 
   pageContainer.append(todoListContainer);
 }
