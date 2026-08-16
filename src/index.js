@@ -25,4 +25,15 @@ createTodoButton.addEventListener('click', () => {
   });
 });
 
+const viewTodoListButton = document.getElementById('todo-list');
+viewTodoListButton.addEventListener('click', () => {
+  renderTodoList(todoList, projectList);
+});
+
+const viewProjectsButton = document.getElementById('projects');
+viewProjectsButton.addEventListener('click', () => {
+  renderProjectList(projectList);
+});
+
+// Initial render of the todo list
 renderTodoList(todoList, projectList);
