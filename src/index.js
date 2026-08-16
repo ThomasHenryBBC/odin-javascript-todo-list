@@ -7,7 +7,7 @@ import {
   renderTodoList,
   renderProjectsPage,
 } from './services/page-display.js';
-import { todoList, projectList } from './data.js';
+import { todoList, projectList, saveData } from './data.js';
 
 const createTodoButton = document.getElementById('create-todo');
 createTodoButton.addEventListener('click', () => {
@@ -20,6 +20,7 @@ createTodoButton.addEventListener('click', () => {
       todoData.project,
     );
     todoList.push(todo);
+    saveData(todoList, projectList);
     console.log('Todo List:', todoList);
     renderTodoList(todoList, projectList);
   });

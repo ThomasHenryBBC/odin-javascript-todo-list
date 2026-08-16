@@ -1,4 +1,4 @@
-export const todoList = [
+const defaultTodoList = [
   {
     title: 'Plan weekly meals',
     description: 'Choose recipes and make a grocery list for the week.',
@@ -23,7 +23,7 @@ export const todoList = [
   },
 ];
 
-export const projectList = [
+const defaultProjectList = [
   {
     name: 'General',
     description: 'General tasks and reminders.',
@@ -37,3 +37,15 @@ export const projectList = [
     description: 'Personal tasks and hobbies.',
   },
 ];
+
+const storedData = JSON.parse(localStorage.getItem('todoListData'));
+
+export const todoList = storedData?.todoList ?? defaultTodoList;
+export const projectList = storedData?.projectList ?? defaultProjectList;
+
+export function saveData(todoList, projectList) {
+  localStorage.setItem(
+    'todoListData',
+    JSON.stringify({ todoList, projectList }),
+  );
+}

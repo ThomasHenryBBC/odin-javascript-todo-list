@@ -1,4 +1,4 @@
-import { projectList } from '../data.js';
+import { projectList, todoList, saveData } from '../data.js';
 import createProject from './create-project.js';
 import deleteTodo from './delete-todo.js';
 
@@ -245,6 +245,7 @@ export function renderProjectsPage() {
     );
 
     projectList.push(project);
+    saveData(todoList, projectList);
 
     renderProjectsPage();
   });
